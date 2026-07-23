@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543841a3b035345ba878e2522e8c3fed, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: Assembly-CSharp::AudioDataSO
+  titleMusicEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  gameMusicEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  footstepsEvent:
+    Guid:
+      Data1: -96842972
+      Data2: 1325212058
+      Data3: -788361333
+      Data4: 967773188
+    Path: event:/SFX/SFX_Footstep
+  jumpEvent:
+    Guid:
+      Data1: 1431938278
+      Data2: 1122831141
+      Data3: 1614395786
+      Data4: -829407313
+    Path: event:/SFX/SFX_Jump
+  buttonClickEvent:
+    Guid:
+      Data1: -1991559541
+      Data2: 1253709528
+      Data3: 1030652583
+      Data4: 631290388
+    Path: event:/UI/UI_ButtonClick
+  buttonBackEvent:
+    Guid:
+      Data1: 1126360035
+      Data2: 1196408009
+      Data3: -969728602
+      Data4: 659102279
+    Path: event:/UI/UI_ButtonBack
+  buttonHoverEvent:
+    Guid:
+      Data1: -351620260
+      Data2: 1239910990
+      Data3: -1574513248
+      Data4: 2111464198
+    Path: event:/UI/UI_ButtonHover
+  sliderMoveEvent:
+    Guid:
+      Data1: -1016767360
+      Data2: 1221646437
+      Data3: 1215540384
+      Data4: 1768407350
+    Path: event:/UI/UI_SliderMove
+  masterVolVCAPath: vca:/Master
+  musicVCAPath: vca:/MUS
+  sfxVCAPath: vca:/SFX
+  voxVCAPath: vca:/VOX
+  uiVCAPath: vca:/UI
