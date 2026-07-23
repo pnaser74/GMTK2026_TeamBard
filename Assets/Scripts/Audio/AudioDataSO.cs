@@ -46,5 +46,4 @@ public class AudioDataSO : ScriptableObject
     public string voxVCAPath;
     public string uiVCAPath;
 
-
 }
