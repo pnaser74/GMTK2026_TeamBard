@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _coll;
+    [SerializeField] private Count _count;
     private InputActions _inputActions;
 
     [Header("Game Feel")]
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxRunSpeed = 4f;
     [SerializeField] private float _timeToMaxRunSpeed = 0.5f;
     [SerializeField] private float _stopTime = 0.2f;
+
+    [Header("Current Game State")]
+    private bool _countContained = true;
 
     private void Start()
     {
@@ -93,6 +97,27 @@ public class PlayerController : MonoBehaviour
 
         if (_rb.linearVelocityY > 0)
             _rb.linearVelocityY = 0f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.layer == 6) //hazard layer
+            OnTouchedHazard();
+    }
+
+    private void OnTouchedHazard()
+    {
+        if (!_countContained)
+            return;
+
+        _countContained = false;
+        _count.gameObject.SetActive(true);
+        _count.TurnToBat();
+    }
+
+    public void OnCountRecontained()
+    {
+        _countContained = true;
     }
 
     private void OnDestroy()
