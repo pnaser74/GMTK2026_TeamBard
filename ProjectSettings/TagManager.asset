@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Hazard
-  - Player
+  - 
   - 
   - 
   - 
@@ -40,6 +40,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1552179097
+    locked: 0
+  - name: Clouds
+    uniqueID: 1257772041
+    locked: 0
+  - name: Rear Environment
+    uniqueID: 134261451
+    locked: 0
+  - name: Mainstage
+    uniqueID: 1230509607
+    locked: 0
+  - name: Foreground
+    uniqueID: 4048644605
+    locked: 0
+  - name: Player
+    uniqueID: 598551841
     locked: 0
   m_RenderingLayers:
   - Default
