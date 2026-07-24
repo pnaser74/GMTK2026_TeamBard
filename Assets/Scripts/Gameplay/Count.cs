@@ -81,7 +81,7 @@ public class Count : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_currForm == FormState.Bat && 
-            collision.gameObject.layer == 7 && 
+            collision.gameObject.CompareTag("Player") && 
             _adherenceToPlayer <= 0f) //bat caught by player
         {
             UnityEvent onCaught = new(); 
