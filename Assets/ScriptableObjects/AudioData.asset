@@ -40,6 +40,62 @@ MonoBehaviour:
       Data3: 1614395786
       Data4: -829407313
     Path: event:/SFX/SFX_Jump
+  takeDamageEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  wingsFlappingEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  torchAttackEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  pitchforkAttackEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  platformCollapseEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  burningObjectEvent:
+    Guid:
+      Data1: 1315512517
+      Data2: 1275559769
+      Data3: -301127024
+      Data4: -1076521763
+    Path: event:/SFX/SFX_FireBurning
+  countDialogueEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  villagerDialogueEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   buttonClickEvent:
     Guid:
       Data1: -1991559541

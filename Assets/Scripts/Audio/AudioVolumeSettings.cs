@@ -9,9 +9,9 @@ public class AudioVolumeSettings : MonoBehaviour
     public FMOD.Studio.VCA voxVCA;
     public FMOD.Studio.VCA uiVCA;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void setUpAudioVolumeSettings()
     {
+        audioData = FindAnyObjectByType<AudioDataSO>();
         masterVolVCA = FMODUnity.RuntimeManager.GetVCA(audioData.masterVolVCAPath);
         musicVCA = FMODUnity.RuntimeManager.GetVCA(audioData.musicVCAPath);
         sfxVCA = FMODUnity.RuntimeManager.GetVCA(audioData.sfxVCAPath);
