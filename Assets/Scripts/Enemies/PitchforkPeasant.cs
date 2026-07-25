@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PitchforkPeasant : Enemy
 {
+    [Header ("Audio")]
+    public AudioDataSO audioData;
+    FMOD.Studio.EventInstance npcInstance;
     
     [Header("Pitchfork")]
     [SerializeField] private Transform _pitchforkPivot;
@@ -27,8 +30,17 @@ public class PitchforkPeasant : Enemy
             _player = player.transform;
     }
 
+    void Start()
+    {
+        npcInstance = FMODUnity.RuntimeManager.CreateInstance(audioData.villagerDialogueEvent);
+        npcInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        npcInstance.start();
+    }
+
+
     protected override void Update()
     {
+        npcInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         base.Update();
         if (_pitchforkPivot == null)
             return;
@@ -71,6 +83,12 @@ public class PitchforkPeasant : Enemy
 
     protected override void OnHitPlayer(Collision2D collision)
     {
-       // Audio cue?
+       FMODUnity.RuntimeManager.PlayOneShot(audioData.takeDamageEvent);
+    }
+
+    void OnDestroy()
+    {
+        npcInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        npcInstance.release();
     }
 }

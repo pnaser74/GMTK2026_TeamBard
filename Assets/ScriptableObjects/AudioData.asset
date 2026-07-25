@@ -42,11 +42,11 @@ MonoBehaviour:
     Path: event:/SFX/SFX_Jump
   takeDamageEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1463387586
+      Data2: 1160579781
+      Data3: 1853533328
+      Data4: 918838633
+    Path: event:/SFX/SFX_PlayerHurt
   wingsFlappingEvent:
     Guid:
       Data1: 0
