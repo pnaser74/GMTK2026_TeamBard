@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{92109e91-9c73-491a-95ba-a519324d96ba}">
+		<property name="assetPath">
+			<value>VOX/Ct_filthy_peasants_V3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5550a416-938e-4f25-a944-ea8ce3361e0e}</destination>
+		</relationship>
+	</object>
+</objects>

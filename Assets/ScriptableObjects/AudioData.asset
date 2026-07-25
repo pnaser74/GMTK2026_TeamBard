@@ -84,18 +84,18 @@ MonoBehaviour:
     Path: event:/SFX/SFX_FireBurning
   countDialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1174975945
+      Data2: 1332619383
+      Data3: 956194490
+      Data4: -965605695
+    Path: event:/VOX/VOX_CountFlavorLines
   villagerDialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -499915465
+      Data2: 1239279717
+      Data3: -1325771078
+      Data4: -565477036
+    Path: event:/VOX/VOX_NPCFlavorLines
   buttonClickEvent:
     Guid:
       Data1: -1991559541

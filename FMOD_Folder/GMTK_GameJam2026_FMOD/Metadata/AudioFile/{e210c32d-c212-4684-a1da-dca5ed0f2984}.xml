@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{e210c32d-c212-4684-a1da-dca5ed0f2984}">
+		<property name="assetPath">
+			<value>VOX/CT_watch_where_V3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8749886621315193</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5550a416-938e-4f25-a944-ea8ce3361e0e}</destination>
+		</relationship>
+	</object>
+</objects>

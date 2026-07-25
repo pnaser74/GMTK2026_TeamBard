@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{3afd5ee2-4b8b-4a57-bfee-e03b7b251015}">
+		<property name="assetPath">
+			<value>VOX/NPC_It_is_a_V1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.5005895691609978</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5550a416-938e-4f25-a944-ea8ce3361e0e}</destination>
+		</relationship>
+	</object>
+</objects>
