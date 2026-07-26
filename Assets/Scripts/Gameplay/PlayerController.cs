@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D _coll;
     [SerializeField] private Count _count;
     [SerializeField] private int countDownLength;
+
     private float currentTime;
     private bool alive;
     private InputActions _inputActions;
+    private bool _inputEnabled = true;
 
     [Header("Game Feel")]
     [SerializeField] private float _maxJumpHeight = 3f;
@@ -23,25 +25,70 @@ public class PlayerController : MonoBehaviour
     [Header("Current Game State")]
     private bool _countContained = true;
 
+    private void Awake()
+    {
+        InitializeInputActions();
+    }
+
     private void Start()
     {
-        _inputActions = new InputActions();
-        _inputActions.Enable();
         StartCoroutine(ReadPlayerInput());
+    }
+
+    private void InitializeInputActions()
+    {
+        if (_inputActions != null)
+            return;
+
+        _inputActions = new InputActions();
+
+        if (_inputEnabled)
+            _inputActions.Enable();
+    }
+
+    public void SetInputEnabled(bool enabled)
+    {
+        _inputEnabled = enabled;
+        InitializeInputActions();
+
+        if (enabled)
+        {
+            _inputActions.Enable();
+        }
+        else
+        {
+            _inputActions.Disable();
+
+            // Prevent Renfield from continuing to slide during the cutscene.
+            if (_rb != null)
+                _rb.linearVelocity = Vector2.zero;
+        }
     }
 
     private IEnumerator ReadPlayerInput()
     {
         while (true)
         {
-            //check horizontal movement
-            var movement = _inputActions.PlayerDefault.Run.ReadValue<Vector2>();
-            if (movement.x != 0)
-                Move(movement);
-            else if (_rb.linearVelocityX != 0 && OnGround())
-                StopMoving();
+            if (!_inputEnabled)
+            {
+                yield return null;
+                continue;
+            }
 
-            //check jumping
+            // Check horizontal movement.
+            var movement =
+                _inputActions.PlayerDefault.Run.ReadValue<Vector2>();
+
+            if (movement.x != 0)
+            {
+                Move(movement);
+            }
+            else if (_rb.linearVelocityX != 0 && OnGround())
+            {
+                StopMoving();
+            }
+
+            // Check jumping.
             if (_inputActions.PlayerDefault.Jump.triggered && OnGround())
                 StartCoroutine(Jump());
 
@@ -51,28 +98,49 @@ public class PlayerController : MonoBehaviour
 
     private void Move(Vector2 input)
     {
-        //gradually accelerate to max speed, turn around instantly
-        var delta = Time.deltaTime * _maxRunSpeed / _timeToMaxRunSpeed;
-        var startVelo = input.x < 0 ? Mathf.Min(0, _rb.linearVelocityX) : Mathf.Max(0, _rb.linearVelocityX);
-        var xVelo = Mathf.Clamp(startVelo + delta * (input.x < 0 ? -1 : 1), -_maxRunSpeed, _maxRunSpeed);
+        // Gradually accelerate to max speed, but turn around instantly.
+        var delta =
+            Time.deltaTime * _maxRunSpeed / _timeToMaxRunSpeed;
+
+        var startVelo = input.x < 0
+            ? Mathf.Min(0, _rb.linearVelocityX)
+            : Mathf.Max(0, _rb.linearVelocityX);
+
+        var direction = input.x < 0 ? -1 : 1;
+
+        var xVelo = Mathf.Clamp(
+            startVelo + delta * direction,
+            -_maxRunSpeed,
+            _maxRunSpeed
+        );
+
         _rb.linearVelocityX = xVelo;
     }
 
     private void StopMoving()
     {
-        //gradually slow to a stop
+        // Gradually slow to a stop.
         var start = _rb.linearVelocityX;
-        var delta = Time.deltaTime * _maxRunSpeed / _stopTime * (start > 0 ? -1 : 1);
-        var xVelo = start > 0 ? Mathf.Max(start + delta, 0f) : Mathf.Min(start + delta, 0f);
+
+        var delta =
+            Time.deltaTime *
+            _maxRunSpeed /
+            _stopTime *
+            (start > 0 ? -1 : 1);
+
+        var xVelo = start > 0
+            ? Mathf.Max(start + delta, 0f)
+            : Mathf.Min(start + delta, 0f);
+
         _rb.linearVelocityX = xVelo;
     }
 
     private bool OnGround()
     {
-        //check for point of collision below center of player
+        // Check for a point of collision below the player's center.
         var points = new List<ContactPoint2D>();
         _coll.GetContacts(points);
-        
+
         foreach (var point in points)
         {
             if (point.point.y < transform.position.y)
@@ -85,16 +153,29 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Jump()
     {
         var startTime = Time.time;
-        var a = Physics2D.gravity.y * _rb.gravityScale;
-        var u = Mathf.Sqrt(-2f * a * _maxJumpHeight);
-        var endTime = startTime + -u / a;
+        var acceleration = Physics2D.gravity.y * _rb.gravityScale;
+        var startingVelocity =
+            Mathf.Sqrt(-2f * acceleration * _maxJumpHeight);
 
-        //slow upward velocity to mirror real-world physics, aborting for small jumps
-        while (!_inputActions.PlayerDefault.Jump.WasReleasedThisFrame() && Time.time < endTime)
+        var endTime =
+            startTime + (-startingVelocity / acceleration);
+
+        while (
+            _inputEnabled &&
+            !_inputActions.PlayerDefault.Jump.WasReleasedThisFrame() &&
+            Time.time < endTime
+        )
         {
-            var t = Time.time - startTime;
-            var v = u + a * t;
-            _rb.linearVelocity = new Vector2(_rb.linearVelocityX, v);
+            var elapsedTime = Time.time - startTime;
+
+            var verticalVelocity =
+                startingVelocity + acceleration * elapsedTime;
+
+            _rb.linearVelocity = new Vector2(
+                _rb.linearVelocityX,
+                verticalVelocity
+            );
+
             yield return null;
         }
 
@@ -104,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer == 6) //hazard layer
+        if (collision.collider.gameObject.layer == 6)
             OnTouchedHazard();
     }
 
@@ -125,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _inputActions.Disable();
+        if (_inputActions != null)
+            _inputActions.Disable();
     }
 }
