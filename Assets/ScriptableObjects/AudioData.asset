@@ -82,7 +82,14 @@ MonoBehaviour:
       Data3: -301127024
       Data4: -1076521763
     Path: event:/SFX/SFX_FireBurning
-  countDialogueEvent:
+  unseatedCountDialogueEvent:
+    Guid:
+      Data1: 81759442
+      Data2: 1125741891
+      Data3: -1546715488
+      Data4: -641200278
+    Path: event:/VOX/VOX_CountFlyingFlavor
+  seatedCountDialogueEvent:
     Guid:
       Data1: -1174975945
       Data2: 1332619383
@@ -96,6 +103,20 @@ MonoBehaviour:
       Data3: -1325771078
       Data4: -565477036
     Path: event:/VOX/VOX_NPCFlavorLines
+  thrallCutsceneDialogue:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  countCutsceneDialogue:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   buttonClickEvent:
     Guid:
       Data1: -1991559541
