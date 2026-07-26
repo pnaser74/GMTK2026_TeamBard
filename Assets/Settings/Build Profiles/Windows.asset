@@ -17,11 +17,7 @@ MonoBehaviour:
   m_Subtarget: 2
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
-<<<<<<< Updated upstream
-    rid: -2
-=======
     rid: 1210411153780900034
->>>>>>> Stashed changes
   m_OverrideGlobalSceneList: 0
   m_Scenes: []
   m_HasScriptingDefines: 0
@@ -31,10 +27,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-<<<<<<< Updated upstream
-    - rid: -2
-      type: {class: , ns: , asm: }
-=======
     - rid: 1210411153780900034
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
@@ -58,4 +50,3 @@ MonoBehaviour:
         m_CopyPDBFiles: 0
         m_WindowsDevicePortalAddress: 
         m_WindowsDevicePortalUsername: 
->>>>>>> Stashed changes

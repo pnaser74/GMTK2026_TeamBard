@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Update falling state
-        isFalling = _rb.velocity.y < 0 && !OnGround();
+        isFalling = _rb.linearVelocity.y < 0 && !OnGround();
         animator.SetBool("isFalling", isFalling);
 
         // Reset jumping state when landing
