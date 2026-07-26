@@ -468,6 +468,63 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   horizontalParallax: 0.25
   verticalParallax: 0.15
+--- !u!1001 &425394010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002001, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428310945872002002, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
+      propertyPath: m_Name
+      value: Old Man Torch Villager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4206552c7211b495ea78b51f108d7c5c, type: 3}
 --- !u!1001 &500312264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3435,3 +3492,4 @@ SceneRoots:
   - {fileID: 504796529849280696}
   - {fileID: 739233518}
   - {fileID: 1046514611}
+  - {fileID: 425394010}

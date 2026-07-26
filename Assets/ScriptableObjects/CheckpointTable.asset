@@ -18,4 +18,16 @@ MonoBehaviour:
     sceneName: Village
     markerId: 1
     displayName: Village - Act 1
+  - globalCheckpoint: 2
+    sceneName: Village
+    markerId: 2
+    displayName: Village - Act 1
+  - globalCheckpoint: 3
+    sceneName: Village
+    markerId: 3
+    displayName: Village - Act 2
+  - globalCheckpoint: 4
+    sceneName: Village
+    markerId: 4
+    displayName: Village - Act 2
   _endingSceneName: 
