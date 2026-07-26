@@ -82,6 +82,13 @@ MonoBehaviour:
       Data3: -301127024
       Data4: -1076521763
     Path: event:/SFX/SFX_FireBurning
+  villageAmbienceEvent:
+    Guid:
+      Data1: -1973053392
+      Data2: 1099333188
+      Data3: 1703823248
+      Data4: -1595200168
+    Path: event:/SFX/SFX_VillageAmbience
   unseatedCountDialogueEvent:
     Guid:
       Data1: 81759442
