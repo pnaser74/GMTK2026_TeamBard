@@ -27,6 +27,7 @@ public class AudioDataSO : ScriptableObject
     [Header ("Environmental SFX Event References")]
     public FMODUnity.EventReference platformCollapseEvent;
     public FMODUnity.EventReference burningObjectEvent;
+    public FMODUnity.EventReference villageAmbienceEvent;
 
     [Header ("Voice Lines Event References")]
     public FMODUnity.EventReference unseatedCountDialogueEvent;
