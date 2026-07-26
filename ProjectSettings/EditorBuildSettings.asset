@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Village.unity
     guid: ad15200146010a240a32719c1be9c53b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Church.unity
     guid: 66b4d8452da5643c68b590c5fc1d959e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Graveyard.unity
     guid: 5e91cc879bb9e445990422028f8abe12
   m_configObjects:

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,8 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private int countDownLength;
 
-    private float currentTime;
-    private bool alive;
+    private float currentCount = 0.0f;
     private InputActions _inputActions;
     private bool _inputEnabled = true;
 
@@ -34,7 +34,37 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ReadPlayerInput());
+        StartCoroutine(CheckCountContainedState());
     }
+
+    private IEnumerator CheckCountContainedState()
+{
+    while (true)
+    {
+        if (!_countContained)
+        {
+            currentCount += Time.deltaTime;
+
+            if (currentCount >= countDownLength)
+            {
+                HandleLoseCondition(); 
+                yield break;
+            }
+        }
+        else
+        {
+            currentCount = 0.0f;
+        }
+
+        yield return null;
+    }
+}
+
+private void HandleLoseCondition()
+{
+    Debug.Log("Lose condition met! Player is no longer alive.");
+    SceneManager.LoadScene("GameOver");
+}
 
     private void InitializeInputActions()
     {

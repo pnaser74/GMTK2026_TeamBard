@@ -15,6 +15,10 @@ public class AudioDataSO : ScriptableObject
     public FMODUnity.EventReference footstepsEvent;
     public FMODUnity.EventReference jumpEvent;
     public FMODUnity.EventReference takeDamageEvent;//in essence this is just losing the Count
+    public FMODUnity.EventReference buttonPressEvent
+    ;//in essence this is just losing the Count
+    public FMODUnity.EventReference gateOpenEvent
+    ;//in essence this is just losing the Count
     
     [Header ("Count SFX Event References")]
     public FMODUnity.EventReference wingsFlappingEvent;
