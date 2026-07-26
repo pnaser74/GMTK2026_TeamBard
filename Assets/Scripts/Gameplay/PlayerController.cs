@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentCount >= countDownLength)
             {
+                _inputActions.PlayerDefault.Disable();
                 HandleLoseCondition(); 
                 yield break;
             }
