@@ -29,8 +29,12 @@ public class AudioDataSO : ScriptableObject
     public FMODUnity.EventReference burningObjectEvent;
 
     [Header ("Voice Lines Event References")]
-    public FMODUnity.EventReference countDialogueEvent;
+    public FMODUnity.EventReference unseatedCountDialogueEvent;
+    public FMODUnity.EventReference seatedCountDialogueEvent;
     public FMODUnity.EventReference villagerDialogueEvent;
+    [Header ("Cutscene Voice Lines Event References")]
+    public FMODUnity.EventReference thrallCutsceneDialogue;
+    public FMODUnity.EventReference countCutsceneDialogue;
 
      [Header("FMOD UI Event References")]
     public FMODUnity.EventReference buttonClickEvent;
