@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _coll;
     [SerializeField] private Count _count;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private int countDownLength;
 
@@ -39,9 +40,26 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(ReadPlayerInput());
         StartCoroutine(CheckCountContainedState());
-        animator.SetBool("isMoving", isMoving);
-        animator.SetBool("isJumping", isJumping);
+    }
+
+    private void Update()
+    {
+        // Update falling state
+        isFalling = _rb.velocity.y < 0 && !OnGround();
         animator.SetBool("isFalling", isFalling);
+
+        // Reset jumping state when landing
+        if (OnGround() && isJumping)
+        {
+            isJumping = false;
+            animator.SetBool("isJumping", isJumping);
+        }
+
+        // Update moving state
+        animator.SetBool("isMoving", isMoving);
+        Debug.Log("isMoving: "+isMoving);
+        Debug.Log("isFalling: "+isFalling);
+        Debug.Log("isJumping: "+isJumping);
     }
 
     private IEnumerator CheckCountContainedState()
@@ -155,6 +173,11 @@ private void HandleLoseCondition()
         );
 
         _rb.linearVelocityX = xVelo;
+
+        if (input.x != 0)
+    {
+        spriteRenderer.flipX = input.x < 0; // Flip if moving left
+    }
     }
 
     private void StopMoving()
@@ -217,6 +240,13 @@ private void HandleLoseCondition()
             );
 
             isJumping = true;
+            animator.SetBool("isJumping", isJumping);
+
+            if (isJumping)
+{
+            isFalling = false;
+            animator.SetBool("isFalling", isFalling);
+}
 
             yield return null;
         }

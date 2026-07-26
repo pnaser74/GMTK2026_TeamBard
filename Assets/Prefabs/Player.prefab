@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3265525094025459074}
   - component: {fileID: 3918232261214531021}
   - component: {fileID: 1513756828462268574}
+  - component: {fileID: 898821283089711203}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -129,7 +130,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1499645}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +140,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.45, y: 0.64}
+  m_Size: {x: 0.45, y: 0.340071}
   m_EdgeRadius: 0
 --- !u!50 &3265525094025459074
 Rigidbody2D:
@@ -183,8 +184,9 @@ MonoBehaviour:
   _rb: {fileID: 3265525094025459074}
   _coll: {fileID: 661461327572563923}
   _count: {fileID: 0}
+  spriteRenderer: {fileID: 7397941665460135304}
   animator: {fileID: 1513756828462268574}
-  countDownLength: 0
+  countDownLength: 7
   _maxJumpHeight: 3
   _maxRunSpeed: 4
   _timeToMaxRunSpeed: 0.5
@@ -211,3 +213,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &898821283089711203
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955837079414613805}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: f56860dfe80224e498ddb76db7a123a5, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 347c8559ade6570478114eacb7e23df0, type: 2}
+  - {fileID: 7400000, guid: 18bea18d99a752d448d920111eaed60b, type: 2}
+  - {fileID: 7400000, guid: c25b5bfc76d16da4f9030000fe3c89ef, type: 2}
+  - {fileID: 7400000, guid: fe4c5afc6335aba41a17c18024e09931, type: 2}
+  - {fileID: 7400000, guid: b9832f5cc29b26e48b119382d4cd37e2, type: 2}
+  - {fileID: 7400000, guid: 03cc2b3d860f02d4e92b012c29e9c8e7, type: 2}
+  - {fileID: 7400000, guid: 8998074108bd0e7429973e184c99a29f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
