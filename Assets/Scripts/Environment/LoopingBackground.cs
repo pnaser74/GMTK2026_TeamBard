@@ -21,6 +21,7 @@ public class LoopingBackground : MonoBehaviour
             _cameraTransform = Camera.main.transform;
         }
 
+
         if (!ReferencesAreValid())
         {
             enabled = false;
