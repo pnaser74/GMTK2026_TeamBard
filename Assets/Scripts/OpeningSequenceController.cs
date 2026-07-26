@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.InputSystem;
 
 public class OpeningSequenceController : MonoBehaviour
 {
@@ -7,17 +8,18 @@ public class OpeningSequenceController : MonoBehaviour
     [SerializeField] private PlayableDirector director;
 
     [Header("Player")]
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [Header("UI")]
     [SerializeField] private CanvasGroup blackOverlay;
 
-    private bool _cutsceneFinished;
+    private bool cutsceneFinished;
 
     private void Awake()
     {
-        playerController.SetInputEnabled(false);
+        // Renfield exists and can be animated, but the player cannot control him.
+        playerInput.enabled = false;
 
         if (playerRigidbody != null)
             playerRigidbody.linearVelocity = Vector2.zero;
@@ -28,6 +30,11 @@ public class OpeningSequenceController : MonoBehaviour
         director.stopped += OnCutsceneStopped;
     }
 
+    private void OnDisable()
+    {
+        director.stopped -= OnCutsceneStopped;
+    }
+
     private void Start()
     {
         director.time = 0;
@@ -36,20 +43,14 @@ public class OpeningSequenceController : MonoBehaviour
 
     private void OnCutsceneStopped(PlayableDirector stoppedDirector)
     {
-        if (_cutsceneFinished)
+        if (cutsceneFinished)
             return;
 
-        _cutsceneFinished = true;
+        cutsceneFinished = true;
 
         if (blackOverlay != null)
             blackOverlay.alpha = 0;
 
-        playerController.SetInputEnabled(true);
-    }
-
-    private void OnDisable()
-    {
-        if (director != null)
-            director.stopped -= OnCutsceneStopped;
+        playerInput.enabled = true;
     }
 }
