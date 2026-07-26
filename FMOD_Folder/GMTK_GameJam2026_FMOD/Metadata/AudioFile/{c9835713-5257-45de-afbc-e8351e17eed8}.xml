@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c9835713-5257-45de-afbc-e8351e17eed8}">
+		<property name="assetPath">
+			<value>VOX/Cutscene/angry mob.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>11.698708333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5550a416-938e-4f25-a944-ea8ce3361e0e}</destination>
+		</relationship>
+	</object>
+</objects>
