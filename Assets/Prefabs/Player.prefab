@@ -183,7 +183,7 @@ MonoBehaviour:
   _rb: {fileID: 3265525094025459074}
   _coll: {fileID: 661461327572563923}
   _count: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 1513756828462268574}
   countDownLength: 0
   _maxJumpHeight: 3
   _maxRunSpeed: 4
