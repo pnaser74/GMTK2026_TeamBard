@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioDataSO
   titleMusicEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1074578171
+      Data2: 1302484491
+      Data3: -569844562
+      Data4: 1335319674
+    Path: event:/MUS/BGM_Main_Menu
   gameMusicEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1999670358
+      Data2: 1165577083
+      Data3: -1117969004
+      Data4: -1726585002
+    Path: event:/MUS/BGM_Overworld
   footstepsEvent:
     Guid:
       Data1: -96842972
