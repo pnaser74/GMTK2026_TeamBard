@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private float currentCount = 0.0f;
     private InputActions _inputActions;
     private bool _inputEnabled = true;
+    private bool isJumping = false;
+    private bool isMoving = false;
+    private bool isFalling = false;
 
     [Header("Game Feel")]
     [SerializeField] private float _maxJumpHeight = 3f;
@@ -35,6 +39,9 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(ReadPlayerInput());
         StartCoroutine(CheckCountContainedState());
+        animator.SetBool("isMoving", isMoving);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isFalling", isFalling);
     }
 
     private IEnumerator CheckCountContainedState()
@@ -113,10 +120,12 @@ private void HandleLoseCondition()
             if (movement.x != 0)
             {
                 Move(movement);
+                isMoving = true;
             }
             else if (_rb.linearVelocityX != 0 && OnGround())
             {
                 StopMoving();
+                isMoving = false;
             }
 
             // Check jumping.
@@ -207,11 +216,14 @@ private void HandleLoseCondition()
                 verticalVelocity
             );
 
+            isJumping = true;
+
             yield return null;
         }
 
         if (_rb.linearVelocityY > 0)
             _rb.linearVelocityY = 0f;
+            isJumping = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
