@@ -7,7 +7,7 @@ public class CreditsTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("credits");
+            SceneManager.LoadScene("Credits");
         }
     }
 }

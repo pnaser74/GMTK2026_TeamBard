@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.InputSystem;
 
 public class OpeningSequenceController : MonoBehaviour
 {
@@ -8,49 +7,71 @@ public class OpeningSequenceController : MonoBehaviour
     [SerializeField] private PlayableDirector director;
 
     [Header("Player")]
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [Header("UI")]
     [SerializeField] private CanvasGroup blackOverlay;
 
-    private bool cutsceneFinished;
+    private bool _cutsceneFinished;
+    private RigidbodyType2D _originalBodyType;
 
     private void Awake()
     {
-        // Renfield exists and can be animated, but the player cannot control him.
-        playerInput.enabled = false;
+        playerController.SetInputEnabled(false);
 
         if (playerRigidbody != null)
+        {
+            _originalBodyType = playerRigidbody.bodyType;
             playerRigidbody.linearVelocity = Vector2.zero;
+            playerRigidbody.angularVelocity = 0f;
+            playerRigidbody.bodyType = RigidbodyType2D.Kinematic;
+        }
     }
 
     private void OnEnable()
     {
-        director.stopped += OnCutsceneStopped;
-    }
-
-    private void OnDisable()
-    {
-        director.stopped -= OnCutsceneStopped;
+        if (director != null)
+            director.stopped += OnCutsceneStopped;
     }
 
     private void Start()
     {
+        if (director == null)
+        {
+            Debug.LogError("Opening Sequence Controller has no Playable Director assigned.");
+            return;
+        }
+
         director.time = 0;
         director.Play();
+
+        Debug.Log($"Opening cutscene started. Duration: {director.duration}");
     }
 
     private void OnCutsceneStopped(PlayableDirector stoppedDirector)
     {
-        if (cutsceneFinished)
+        if (_cutsceneFinished)
             return;
 
-        cutsceneFinished = true;
+        _cutsceneFinished = true;
 
         if (blackOverlay != null)
-            blackOverlay.alpha = 0;
+            blackOverlay.alpha = 0f;
 
-        playerInput.enabled = true;
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.bodyType = _originalBodyType;
+            playerRigidbody.linearVelocity = Vector2.zero;
+            playerRigidbody.angularVelocity = 0f;
+        }
+
+        playerController.SetInputEnabled(true);
+    }
+
+    private void OnDisable()
+    {
+        if (director != null)
+            director.stopped -= OnCutsceneStopped;
     }
 }
