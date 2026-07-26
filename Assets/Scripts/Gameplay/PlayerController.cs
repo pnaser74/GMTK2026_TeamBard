@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _coll;
     [SerializeField] private Count _count;
+    [SerializeField] private Animator animator;
     [SerializeField] private int countDownLength;
 
     private float currentTime;
@@ -197,11 +198,13 @@ public class PlayerController : MonoBehaviour
         _countContained = false;
         _count.gameObject.SetActive(true);
         _count.TurnToBat();
+        animator.SetBool("countContained", _countContained);
     }
 
     public void OnCountRecontained()
     {
         _countContained = true;
+        animator.SetBool("countContained", _countContained);
     }
 
     private void OnDestroy()
