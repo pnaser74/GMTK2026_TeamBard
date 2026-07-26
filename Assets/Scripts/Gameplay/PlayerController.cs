@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Collider2D _coll;
     [SerializeField] private Count _count;
+    [SerializeField] private int countDownLength;
+    private float currentTime;
+    private bool alive;
     private InputActions _inputActions;
 
     [Header("Game Feel")]
