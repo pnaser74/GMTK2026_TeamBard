@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
     [SerializeField] private int countDownLength;
+    private AudioManager audioManager;
 
     private float currentCount = 0.0f;
     private InputActions _inputActions;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(ReadPlayerInput());
         StartCoroutine(CheckCountContainedState());
+        audioManager = FindAnyObjectByType<AudioManager>();
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("CountUnseated", 0);
     }
 
     private void Update()
@@ -57,9 +60,6 @@ public class PlayerController : MonoBehaviour
 
         // Update moving state
         animator.SetBool("isMoving", isMoving);
-        Debug.Log("isMoving: "+isMoving);
-        Debug.Log("isFalling: "+isFalling);
-        Debug.Log("isJumping: "+isJumping);
     }
 
     private IEnumerator CheckCountContainedState()
@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
 private void HandleLoseCondition()
 {
     Debug.Log("Lose condition met! Player is no longer alive.");
+    FMODUnity.RuntimeManager.StudioSystem.setParameterByName("CountUnseated", 0);
     SceneManager.LoadScene("GameOver");
 }
 
@@ -268,6 +269,16 @@ private void HandleLoseCondition()
         if (!_countContained)
             return;
 
+        if (audioManager.overworldMusicInstance.isValid())
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("CountUnseated", 1);
+            Debug.Log("Set CountUnseated to 1");
+        }
+        else
+        {
+            Debug.LogError("overworldMusicInstance is not valid");
+        }
+
         _countContained = false;
         _count.gameObject.SetActive(true);
         _count.TurnToBat();
@@ -276,6 +287,7 @@ private void HandleLoseCondition()
 
     public void OnCountRecontained()
     {
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("CountUnseated", 0);
         _countContained = true;
         animator.SetBool("countContained", _countContained);
     }

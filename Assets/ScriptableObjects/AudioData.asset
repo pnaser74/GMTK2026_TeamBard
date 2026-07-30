@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543841a3b035345ba878e2522e8c3fed, type: 3}
   m_Name: AudioData
   m_EditorClassIdentifier: Assembly-CSharp::AudioDataSO
+  countUnseatedParameter: CountUnseated
   titleMusicEvent:
     Guid:
       Data1: -1074578171
@@ -47,6 +48,20 @@ MonoBehaviour:
       Data3: 1853533328
       Data4: 918838633
     Path: event:/SFX/SFX_PlayerHurt
+  buttonPressEvent:
+    Guid:
+      Data1: 866108585
+      Data2: 1163912480
+      Data3: -329195115
+      Data4: 648466629
+    Path: event:/SFX/SFX_ButtonPress
+  gateOpenEvent:
+    Guid:
+      Data1: -762791595
+      Data2: 1335566776
+      Data3: -711576402
+      Data4: 227897127
+    Path: event:/SFX/SFX_GateOpen
   wingsFlappingEvent:
     Guid:
       Data1: 0

@@ -6,6 +6,7 @@ public class AudioDataSO : ScriptableObject
 {
     [Header("FMOD Global Parameter References")]
     public FMOD.Studio.PARAMETER_ID footstepSurfaceParameter;
+    public string countUnseatedParameter;
 
     [Header ("Music Event References")]
     public FMODUnity.EventReference titleMusicEvent;

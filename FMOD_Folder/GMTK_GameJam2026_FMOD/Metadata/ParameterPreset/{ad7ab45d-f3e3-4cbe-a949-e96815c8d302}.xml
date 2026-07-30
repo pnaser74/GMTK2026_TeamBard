@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{ad7ab45d-f3e3-4cbe-a949-e96815c8d302}">
 		<property name="name">
-			<value>Count Unseated</value>
+			<value>CountUnseated</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2cf04fa7-c4ba-4fbb-b6b0-05e82f15ccff}</destination>
